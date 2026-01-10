@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Message, Conversation } from '@/types/chat';
 import Sidebar from './Sidebar';
 import MessageList from './MessageList';
@@ -16,19 +16,7 @@ export default function ChatLayout({ userId }: { userId: string }) {
   const [selectedModel, setSelectedModel] = useState('anthropic/claude-3.5-sonnet');
   const supabase = createClient();
 
-  useEffect(() => {
-    loadConversations();
-  }, []);
-
-  useEffect(() => {
-    if (currentConversationId) {
-      loadMessages(currentConversationId);
-    } else {
-      setMessages([]);
-    }
-  }, [currentConversationId]);
-
-  const loadConversations = async () => {
+  const loadConversations = useCallback(async () => {
     const { data, error } = await supabase
       .from('conversations')
       .select('*')
@@ -38,9 +26,9 @@ export default function ChatLayout({ userId }: { userId: string }) {
     if (!error && data) {
       setConversations(data);
     }
-  };
+  }, [supabase, userId]);
 
-  const loadMessages = async (conversationId: string) => {
+  const loadMessages = useCallback(async (conversationId: string) => {
     const { data, error } = await supabase
       .from('messages')
       .select('*')
@@ -50,7 +38,19 @@ export default function ChatLayout({ userId }: { userId: string }) {
     if (!error && data) {
       setMessages(data);
     }
-  };
+  }, [supabase]);
+
+  useEffect(() => {
+    loadConversations();
+  }, [loadConversations]);
+
+  useEffect(() => {
+    if (currentConversationId) {
+      loadMessages(currentConversationId);
+    } else {
+      setMessages([]);
+    }
+  }, [currentConversationId, loadMessages]);
 
   const handleNewChat = () => {
     setCurrentConversationId(undefined);

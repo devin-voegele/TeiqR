@@ -11,7 +11,7 @@ import { useTheme } from '@/contexts/ThemeContext';
 
 interface PerplexitySidebarProps {
   conversations: Conversation[];
-  currentConversationId?: string;
+  currentConversationId?: string | null;
   onNewChat: () => void;
   onSelectConversation: (id: string) => void;
   user: any;

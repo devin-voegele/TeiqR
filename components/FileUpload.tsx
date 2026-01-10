@@ -29,7 +29,7 @@ export default function FileUpload({ onFilesSelected, selectedFiles, onRemoveFil
         reader.readAsDataURL(file);
       }
     });
-  }, [selectedFiles]);
+  }, [selectedFiles, imagePreviews]);
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);

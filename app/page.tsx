@@ -53,7 +53,7 @@ export default async function HomePage() {
           </h1>
           
           <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed animate-slide-up" style={{animationDelay: '0.1s'}}>
-            Get intelligent answers with sources and context that matter. Powered by Anthropic's Claude via OpenRouter.
+            Get intelligent answers with sources and context that matter. Powered by Anthropit&apos;s Claude via OpenRouter.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up" style={{animationDelay: '0.2s'}}>
@@ -100,7 +100,7 @@ export default async function HomePage() {
             </div>
             <h3 className="text-xl font-semibold mb-3 text-white">Conversation history</h3>
             <p className="text-gray-400 leading-relaxed">
-              All your conversations are saved securely in Supabase for easy access anytime.
+              All you&apos;re conversations are saved securely in Supabase for easy access anytime.
             </p>
           </div>
         </div>

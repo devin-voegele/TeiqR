@@ -113,7 +113,7 @@ export default function EmailConfirmationAlert({ email, onClose }: EmailConfirma
               className="space-y-3 mb-6"
             >
               <p className="text-gray-400 text-center leading-relaxed">
-                We've sent a confirmation email to
+                We&apos;ve sent a confirmation email to
               </p>
               <div className="px-4 py-3 bg-[#1A1A1A] border border-[#2A2A2A] rounded-xl">
                 <p className="text-blue-400 text-center font-medium break-all">
@@ -188,7 +188,7 @@ export default function EmailConfirmationAlert({ email, onClose }: EmailConfirma
               transition={{ delay: 1.1 }}
               className="text-center text-xs text-gray-600 mt-4"
             >
-              Didn't receive the email? Check your spam folder or contact support.
+              Didn&apos;t receive the email? Check your spam folder or contact support.
             </motion.p>
           </div>
         </motion.div>

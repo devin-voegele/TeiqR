@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
@@ -14,11 +14,7 @@ export default function SettingsPage() {
   const supabase = createClient();
   const router = useRouter();
 
-  useEffect(() => {
-    loadUser();
-  }, []);
-
-  const loadUser = async () => {
+  const loadUser = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser();
     
     if (!user) {
@@ -39,7 +35,7 @@ export default function SettingsPage() {
     }
 
     setLoading(false);
-  };
+  }, [supabase, router]);
 
   const handleSave = async () => {
     if (!user) return;
@@ -62,6 +58,10 @@ export default function SettingsPage() {
       setSaving(false);
     }
   };
+
+  useEffect(() => {
+    loadUser();
+  }, [loadUser]);
 
   if (loading) {
     return (

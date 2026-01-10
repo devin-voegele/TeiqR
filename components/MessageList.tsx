@@ -22,7 +22,7 @@ export default function MessageList({ messages, isLoading }: MessageListProps) {
         <div className="flex items-center justify-center h-full">
           <div className="text-center text-foreground/40">
             <h2 className="text-2xl font-semibold mb-2">Start a conversation</h2>
-            <p>Ask me anything and I'll help you find answers.</p>
+            <p>Ask me anything and I&apos;ll help you find answers.</p>
           </div>
         </div>
       ) : (
